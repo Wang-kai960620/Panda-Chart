@@ -1,24 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {lazy,Suspense} from "react";
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+import {Loading} from "./Components/Loading";
+import {NoMatch} from "./Views/NoMatch";
+
+
+const Home = React.lazy(() => import( "./Views/Home").then(({Home}) => ({default: Home})));
+const About = lazy(() => import("./Views/About").then(({About}) => ({default: About})))
+const History = lazy(() => import("./Views/History").then(({History}) => ({default: History})))
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+
+      <Suspense fallback={<Loading/>}>
+        <Switch>
+          <Route path='/home'>
+            <Home/>
+          </Route>
+          <Route path='/history'>
+            <History/>
+          </Route>
+          <Route path='/about'>
+            <About/>
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/home"/>
+          </Route>
+          <Route path='*'>
+            <NoMatch/>
+          </Route>
+        </Switch>
+      </Suspense>
+      </Router>
+
     </div>
   );
 }
