@@ -1,6 +1,6 @@
 import React, {useRef} from "react";
 import {observer} from "mobx-react";
-import {useStore} from "../Store/UseStore";
+import {useStore} from "../Store";
 import {Layout} from "../Components/Layout";
 
 
