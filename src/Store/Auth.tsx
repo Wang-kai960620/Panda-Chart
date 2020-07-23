@@ -8,7 +8,7 @@ class AuthStore {
 
   @observable values = {
     userName: "jirengu",
-    passWorld: ""
+    passWord: ""
   };
 
 
@@ -21,7 +21,7 @@ class AuthStore {
   }
 
   @action setPassWorld(value: string) {
-    this.values.passWorld = value;
+    this.values.passWord = value;
   }
 
   @action Login() {
