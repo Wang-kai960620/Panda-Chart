@@ -32,6 +32,8 @@ function Header() {
         <NavLink to='/home' activeClassName='selected' exact>首页</NavLink>
         <NavLink to='/history' activeClassName='selected'>上传历史</NavLink>
         <NavLink to='/about' activeClassName='selected'>关于</NavLink>
+        <NavLink to='/login' activeClassName='selected'>登录</NavLink>
+        <NavLink to='/register' activeClassName='selected'>注册</NavLink>
       </Wrapper>
     </div>
   );
