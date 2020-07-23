@@ -11,7 +11,7 @@ background: #c4c4c4;
 >a{
 text-decoration:none;
 font-size: 2em;
-padding: 0 20px;
+margin: 0 20px;
 color: #fff;
 &.selected{
 color: #b8dbd3;
