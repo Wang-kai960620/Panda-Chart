@@ -36,7 +36,6 @@ type ValidateErrorEntity = {
   }[];
   outOfDate: boolean;
 }
-type NamePath = string | number | InternalNamePath
 
 function Register() {
 
@@ -55,7 +54,6 @@ function Register() {
       return Promise.resolve();
     }
   };
-  // getFieldValue:(name: NamePath) =>any
   // @ts-ignore
   const checkPassword = ({getFieldValue}) => ({
     validator(rule: Rule, value: string) {
