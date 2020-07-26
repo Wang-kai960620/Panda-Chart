@@ -25,7 +25,7 @@ const Auth = {
     User.logOut();
   },
   getCurrent(){
-    User.current()
+     return User.current()
   }
 };
 

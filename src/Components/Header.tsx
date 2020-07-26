@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import {NavLink} from "react-router-dom";
+import React, {useEffect,} from "react";
+import {NavLink, useHistory} from "react-router-dom";
 import styled from "styled-components";
 import {Button} from "antd";
-
+import {useStore} from "../Store";
 
 const Wrapper = styled.div`
 display: flex;
@@ -27,11 +27,32 @@ color: #ffd866;
 `;
 const StyledEntry = styled.div`
 margin-left: auto;
+>span{
+font-size: 30px;
+}
+>Button{
+margin: 0 20px;
+}
 `;
 
 
 function Header() {
-  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const {AuthStore, UserStore} = useStore();
+  const history = useHistory();
+  const handleLogout = () => {
+    AuthStore.logout();
+    history.push("./register");
+  };
+
+  const handleLogin =()=>{
+  history.push('./login')
+  }
+  const handleRegister = ()=>{
+    history.push('./register')
+  }
+  useEffect(() => {
+    UserStore.pullUser();
+  }, [UserStore]);
   return (
     <div>
       <Wrapper>
@@ -41,15 +62,15 @@ function Header() {
         <NavLink to='/about' activeClassName='selected'>关于</NavLink>
         <StyledEntry>
           {
-            isLogin ?
+            UserStore.currentUser ?
               <>
-                <span>吴彦祖</span>
-                <Button type="primary" onClick={() => setIsLogin(false)}> 注销 </Button>
+                <span>{UserStore.currentUser.attributes.username}</span>
+                <Button type="primary" onClick={handleLogout}> 注销 </Button>
               </>
               :
               <>
-                <Button type="primary" onClick={() => setIsLogin(true)}> 登录 </Button>
-                <Button type="primary"> 注册 </Button>
+                <Button type="primary" onClick={handleLogin}> 登录 </Button>
+                <Button type="primary" onClick={handleRegister}> 注册 </Button>
               </>
           }
         </StyledEntry>

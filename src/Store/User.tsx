@@ -2,7 +2,7 @@ import {observable, action} from "mobx";
 import {Auth} from "../Model/Controller";
 
 class UserStore {
-  @observable currentUser: any = null;
+  @observable currentUser:any = null;
 
   @action pullUser() {
     this.currentUser = Auth.getCurrent();

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import {Rule} from "antd/lib/form";
 import {useStore} from "../Store";
 import { useHistory } from 'react-router-dom'
+import {Auth} from "../Model/Controller";
 
 
 const Wrapper = styled.div`
@@ -40,17 +41,17 @@ type ValidateErrorEntity = {
 
 
 function Login() {
-  const {AuthStore}  = useStore()
+  const {AuthStore,UserStore}  = useStore()
   const history  = useHistory()
 
   const onFinish = (values: Store) => {
     console.log("Success:", values);
     AuthStore.setUserName(values.username)
-    console.log('AuthStore.values.userName');
-    console.log(AuthStore.values.userName);
     AuthStore.setPassWorld(values.password)
     AuthStore.Login()
       .then(() => {
+        console.log(UserStore.currentUser);
+        console.log(Auth.getCurrent());
         history.push('./')
       }).catch(() => {
       console.log('登录失败，什么都不做')

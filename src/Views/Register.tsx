@@ -1,6 +1,5 @@
 import React from "react";
 import {Layout} from "../Components/Layout";
-// import {useStore} from "../Store";
 import {Form, Input, Button} from "antd";
 import styled from "styled-components";
 import {Rule} from "antd/lib/form";
@@ -47,8 +46,6 @@ function Register() {
   const onFinish = (values: Store) => {
     console.log("Success:", values);
     AuthStore.setUserName(values.username)
-    console.log('AuthStore.values.userName');
-    console.log(AuthStore.values.userName);
     AuthStore.setPassWorld(values.password)
     AuthStore.Register()
       .then(() => {
