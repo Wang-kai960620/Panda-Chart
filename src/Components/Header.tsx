@@ -27,7 +27,7 @@ color: #ffd866;
 `;
 const StyledEntry = styled.div`
 margin-left: auto;
-`
+`;
 
 
 function Header() {
@@ -40,24 +40,18 @@ function Header() {
         <NavLink to='/history' activeClassName='selected'>上传历史</NavLink>
         <NavLink to='/about' activeClassName='selected'>关于</NavLink>
         <StyledEntry>
-        {
-          isLogin ?
-            <>
-              <span>吴彦祖</span>
-              <Button type="primary" onClick={() => setIsLogin(false)}>
-                <NavLink to='/login' activeClassName='selected'>注销</NavLink>
-              </Button>
-            </>
-            :
-            <>
-              <Button type="primary" onClick={() => setIsLogin(true)}>
-                <NavLink to='/login' activeClassName='selected'>登录</NavLink>
-              </Button>
-              <Button type="primary">
-                <NavLink to='/register' activeClassName='selected'>注册</NavLink>
-              </Button>
-            </>
-        }
+          {
+            isLogin ?
+              <>
+                <span>吴彦祖</span>
+                <Button type="primary" onClick={() => setIsLogin(false)}> 注销 </Button>
+              </>
+              :
+              <>
+                <Button type="primary" onClick={() => setIsLogin(true)}> 登录 </Button>
+                <Button type="primary"> 注册 </Button>
+              </>
+          }
         </StyledEntry>
 
       </Wrapper>

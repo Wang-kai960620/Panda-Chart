@@ -7,18 +7,26 @@ AV.init({
 });
 
 
-const Aut = {
+const Auth = {
   register(userName: string, password: string) {
     const user = new User();
     user.setUsername(userName);
     user.setPassword((password));
     return new Promise((resolve, reject) => {
-      user.signUp().then(value => resolve(value)).catch(error => reject(error));
+      user.signUp().then(value => resolve(value), error => reject(error));
     });
   },
   login(userName: string, password: string) {
     return new Promise((resolve, reject) => {
-      User.logIn(userName, password).then(response => resolve(response)).catch(error => reject(error));
+      User.logIn(userName, password).then(response => resolve(response), error => reject(error));
     });
   },
-}
+  logout() {
+    User.logOut();
+  },
+  getCurrent(){
+    User.current()
+  }
+};
+
+export {Auth}

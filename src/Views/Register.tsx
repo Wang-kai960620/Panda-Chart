@@ -4,6 +4,8 @@ import {Layout} from "../Components/Layout";
 import {Form, Input, Button} from "antd";
 import styled from "styled-components";
 import {Rule} from "antd/lib/form";
+import {useStore} from "../Store";
+import { useHistory } from 'react-router-dom'
 
 
 const Wrapper = styled.div`
@@ -37,10 +39,26 @@ type ValidateErrorEntity = {
   outOfDate: boolean;
 }
 
+
 function Register() {
+  const {AuthStore}  = useStore()
+  const history  = useHistory()
 
   const onFinish = (values: Store) => {
     console.log("Success:", values);
+    AuthStore.setUserName(values.username)
+    console.log('AuthStore.values.userName');
+    console.log(AuthStore.values.userName);
+    AuthStore.setPassWorld(values.password)
+    AuthStore.Register()
+      .then(() => {
+        console.log('注册成功, 跳转到首页')
+        history.push('./')
+      }).catch(() => {
+      console.log('注册失败，什么都不做')
+    });
+
+
   };
 
 
