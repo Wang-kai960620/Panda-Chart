@@ -7,8 +7,13 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: url("https://5b0988e595225.cdn.sohucs.com/images/20171130/a8984a6b68934610b475db14028a1703.bmp");
-    background-size: 100% 100%;
+    background: url(backgroundImage.bmp) no-repeat center center fixed;
+    background-size: cover; /* for IE9+, Safari 4.1+, Chrome 3.0+, Firefox 3.6+ */
+    -webkit-background-size: cover; /* for Safari 3.0 - 4.0 , Chrome 1.0 - 3.0 */
+    -moz-background-size: cover; /* optional for Firefox 3.6 */
+    -o-background-size: cover; /* for Opera 9.5 */
+    padding: 0; /* to remove the default white margin of body */
+    overflow: hidden;
 }
 
 a {
