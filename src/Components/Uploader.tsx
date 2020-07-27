@@ -45,21 +45,7 @@ const UpLoader = observer(() => {
             band files
           </p>
         </Dragger>
-        {
-          ImageStore.serveFile ?
-            <>
-              <h1>上传结果</h1>
-              <dl>
-                <dt> 线上地址</dt>
-                <dd>
-                  <a rel='noopener' href={ImageStore.serveFile.attributes.url.attributes.url}>
-                    {ImageStore.serveFile.attributes.url.attributes.url}
-                  </a>
-                </dd>
-              </dl>
-            </>
-            : null
-        }
+
       </Wrapper>
     );
   }

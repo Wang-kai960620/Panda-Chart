@@ -23,3 +23,8 @@ a{
 ol,ul{
   list-style: none;
 }
+input{
+  border: 1px solid #e1e1e1e1;
+  outline: none;
+  margin: 10px 10px ;
+}
