@@ -10,22 +10,22 @@ display: flex;
 text-align: center;
 align-items: center;
 padding: 20px 120px ; 
-background: #c4c4c4;
+box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.1);
 >a{
 text-decoration:none;
 font-size: 2em;
 margin: 0 20px;
 padding: 0 10px ;
-color: #fff;
+color:black;
 border-radius: 10px ;
 &.selected{
-border-bottom: 1px solid  #b8dbd3;
+background: #b8dbaa;
 }
 }
 `;
 const Text = styled.div`
 font-size: 50px;
-color: #ffd866;
+color: #4d57af;
 `;
 const StyledEntry = styled.div`
 margin-left: auto;
@@ -34,7 +34,9 @@ font-size: 30px;
 }
 >Button{
 margin: 0 20px;
-}
+background:#b8dbaa;
+border: none;
+ }
 `;
 
 const StyleNavLink = styled(NavLink)`
@@ -50,7 +52,7 @@ const Header = observer(() => {
   const history = useHistory();
   const handleLogout = () => {
     AuthStore.logout();
-    history.push("./register");
+    history.push("./login");
   };
 
   const handleLogin = () => {

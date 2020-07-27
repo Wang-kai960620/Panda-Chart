@@ -4,7 +4,7 @@ import {Layout} from "../Components/Layout";
 function About() {
   return (
   <Layout>
-    <h3>这里是About页面</h3>
+    <h1>这里是About页面</h1>
   </Layout>
 )
 }

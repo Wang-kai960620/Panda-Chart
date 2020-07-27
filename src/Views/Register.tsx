@@ -13,6 +13,8 @@ width: 600px;
 margin: 100px auto;
 box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.2);
 padding: 20px;
+background:rgba(241, 243, 244,0.25) ;
+
 `;
 const StyleH1 = styled.h1`
 text-align: center;

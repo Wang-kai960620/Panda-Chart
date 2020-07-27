@@ -5,14 +5,20 @@ import {UpLoader} from "../Components/Uploader";
 import {observer, useLocalStore} from "mobx-react";
 import styled, {keyframes} from "styled-components";
 import {useHistory} from "react-router-dom";
+import {message} from "antd";
 
 
+const StyleImg = styled.img`
+width: 200px ;
+
+`;
 const Wrapper = styled.div`
 max-width: 1200px;
-margin: 20px auto;
-border: 1px dashed black;
+margin: 50px auto;
+background:rgba(241, 243, 244,0.25) ;
+border: 2px dashed #e1e1e1e1;
 :hover{
-border: 1px dashed #40a9ff;
+border: 2px dashed #40a9ff;
 }
 
 `;
@@ -22,21 +28,23 @@ margin: 0 auto;
 `;
 const big = keyframes`
 0%{
-transform: scale(0.99);
+background: black;
 }
 50%{
-transform: scale(1);
+background: red;
 }
 100%{
-transform: scale(0.99);
-}
-`;
-const WrapperTitle = styled.div`
+background: black;}
 
+`;
+const StyleDiv = styled.div`
+background: aqua;
 max-width: 1000px;
 text-align: center;
-animation: 2ms linear infinite ${big};
-
+margin:  0 auto;
+//animation: 2ms linear infinite ${big};
+color: white;
+font-size: 20px;
 `;
 const Result = styled.div`
 margin: 50px 100px;
@@ -62,26 +70,26 @@ const Home = observer(() => {
     setHeight(height: string) {
       store.height = height;
     },
+    //?imageView2/0/w/800/h/400)
     get AllStr() {
       return ImageStore.serveFile.attributes.url.attributes.url + "?imageView2/0" + this.heightStr + this.widthStr;
     }
-    //?imageView2/0/w/800/h/400)
   }));
 
   const inWidth = () => {
-    const width = widthRef.current as HTMLInputElement
-    if((/^\d+$/).test(width.value)){
+    const width = widthRef.current as HTMLInputElement;
+    if ((/^\d+$/).test(width.value)) {
       store.width = width.value;
-    }else{
-      alert('尺寸只能是数字')
+    } else {
+      message.warning("尺寸只能是数字");
     }
   };
   const inHeight = () => {
-    const height = heightRef.current as  HTMLInputElement
-    if((/^\d+$/).test(height.value)){
+    const height = heightRef.current as HTMLInputElement;
+    if ((/^\d+$/).test(height.value)) {
       store.height = height.value;
-    }else{
-      alert('尺寸只能是数字')
+    } else {
+      message.warning("尺寸只能是数字");
     }
   };
   const {ImageStore} = useStore();
@@ -96,15 +104,16 @@ const Home = observer(() => {
           UserStore.currentUser ?
             <H1>上传文件</H1>
             :
-            <WrapperTitle>
-              <h1 onClick={toLogin}>请先登录</h1>
-            </WrapperTitle>
+            <StyleDiv>
+              <span onClick={toLogin}>请先登录</span>
+            </StyleDiv>
         }
         <UpLoader/>
         {
           ImageStore.serveFile ?
             <Result>
               <h1>上传结果</h1>
+              <StyleImg src={ImageStore.serveFile.attributes.url.attributes.url}/>
               <dl>
                 <dt><h2> 线上地址 </h2></dt>
                 <dd>
