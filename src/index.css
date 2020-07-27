@@ -7,12 +7,8 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-@media (min-width:500px) {
-    body {
-        background-image: url("https://5b0988e595225.cdn.sohucs.com/images/20171130/a8984a6b68934610b475db14028a1703.bmp");
-        background-size: 100% 100%
-    }
+    background-image: url("https://5b0988e595225.cdn.sohucs.com/images/20171130/a8984a6b68934610b475db14028a1703.bmp");
+    background-size: 100% 100%;
 }
 
 a {

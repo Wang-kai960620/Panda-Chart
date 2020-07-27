@@ -5,12 +5,23 @@ import {Button} from "antd";
 import {useStore} from "../Store";
 import {observer} from "mobx-react";
 
+
+
+
 const Wrapper = styled.div`
 display: flex;
 text-align: center;
 align-items: center;
 padding: 20px 120px ; 
 box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.1);
+ @media (max-width: 500px) {
+ padding: 0 0 ;
+  }
+  @media (max-width: 300px){
+  font-size: 5px;
+}
+
+
 >a{
 text-decoration:none;
 font-size: 2em;
@@ -26,9 +37,17 @@ background: #b8dbaa;
 const Text = styled.div`
 font-size: 50px;
 color: #4d57af;
+ @media (max-width: 500px) {
+ display: none;
+  }
 `;
 const StyledEntry = styled.div`
 margin-left: auto;
+ @media (max-width: 500px) {
+ margin: 0 0 ;
+ padding: 0 0 ;
+  }
+
 >span{
 font-size: 30px;
 }

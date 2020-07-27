@@ -10,13 +10,18 @@ import {message} from "antd";
 
 const StyleImg = styled.img`
 width: 200px ;
-
+@media (max-width: 500px){
+width: 100px;
+}
 `;
 const Wrapper = styled.div`
 max-width: 1200px;
 margin: 50px auto;
 background:rgba(241, 243, 244,0.25) ;
 border: 2px dashed #e1e1e1e1;
+ @media (max-width: 500px) {
+ max-width: 300px;
+  }
 :hover{
 border: 2px dashed #40a9ff;
 }
@@ -48,6 +53,9 @@ font-size: 20px;
 `;
 const Result = styled.div`
 margin: 50px 100px;
+ @media (max-width: 500px) {
+ margin: 0;
+  }
 `;
 
 const Home = observer(() => {
