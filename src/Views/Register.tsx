@@ -5,6 +5,7 @@ import styled from "styled-components";
 import {Rule} from "antd/lib/form";
 import {useStore} from "../Store";
 import { useHistory } from 'react-router-dom'
+import {observer} from "mobx-react";
 
 
 const Wrapper = styled.div`
@@ -39,7 +40,7 @@ type ValidateErrorEntity = {
 }
 
 
-function Register() {
+const  Register = observer (()=> {
   const {AuthStore}  = useStore()
   const history  = useHistory()
 
@@ -144,6 +145,6 @@ function Register() {
 
     </Layout>
   );
-}
+})
 
 export {Register};

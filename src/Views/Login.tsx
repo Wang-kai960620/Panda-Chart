@@ -4,8 +4,9 @@ import {Form, Input, Button} from "antd";
 import styled from "styled-components";
 import {Rule} from "antd/lib/form";
 import {useStore} from "../Store";
-import { useHistory } from 'react-router-dom'
+import {useHistory} from "react-router-dom";
 import {Auth} from "../Model/Controller";
+import {observer} from "mobx-react";
 
 
 const Wrapper = styled.div`
@@ -40,21 +41,21 @@ type ValidateErrorEntity = {
 }
 
 
-function Login() {
-  const {AuthStore,UserStore}  = useStore()
-  const history  = useHistory()
+const Login = observer(() => {
+  const {AuthStore, UserStore} = useStore();
+  const history = useHistory();
 
   const onFinish = (values: Store) => {
     console.log("Success:", values);
-    AuthStore.setUserName(values.username)
-    AuthStore.setPassWorld(values.password)
+    AuthStore.setUserName(values.username);
+    AuthStore.setPassWorld(values.password);
     AuthStore.Login()
       .then(() => {
         console.log(UserStore.currentUser);
         console.log(Auth.getCurrent());
-        history.push('./')
+        history.push("./");
       }).catch(() => {
-      console.log('登录失败，什么都不做')
+      console.log("登录失败，什么都不做");
     });
 
 
@@ -124,6 +125,6 @@ function Login() {
 
     </Layout>
   );
-}
+});
 
 export {Login};

@@ -1,25 +1,16 @@
 import React from "react";
 import {Layout} from "../Components/Layout";
 import {useStore} from "../Store";
-import styled from "styled-components";
 import {UpLoader} from "../Components/Uploader";
+import {observer} from "mobx-react";
 
 
-const Wrapper = styled.div`
-max-width: 1000px;
-margin: 100px auto;
-`;
-
-
-function Home() {
+const Home = observer(() => {
   const {UserStore} = useStore();
 
 
   return (
     <Layout>
-      <Wrapper>
-        <UpLoader/>
-      </Wrapper>
       {
         UserStore.currentUser ?
           <>
@@ -30,8 +21,9 @@ function Home() {
             <h1> 请先登录</h1>
           </>
       }
+      <UpLoader/>
     </Layout>
   );
-}
+});
 
 export {Home};

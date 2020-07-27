@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {Header} from "./Header";
+import {observer} from "mobx-react";
 
 
 const Wrapper = styled.div`
@@ -12,15 +13,16 @@ const Main = styled.div`
 flex-grow: 1;
 `;
 
-function Layout(props: any) {
-  return (
-    <Wrapper>
-      <Main>
-        {props.children}
-      </Main>
-      <Header/>
-    </Wrapper>
-  );
-}
+const Layout = observer((props: any) => {
+    return (
+      <Wrapper>
+        <Main>
+          {props.children}
+        </Main>
+        <Header/>
+      </Wrapper>
+    );
+  }
+);
 
 export {Layout};

@@ -10,5 +10,5 @@ const context = createContext(
     UserStore,
     ImageStore
   }
-)
+);
 export  const useStore = ()=> useContext(context)
