@@ -22,11 +22,33 @@ const Auth = {
     });
   },
   logout() {
-    User.logOut();
+    User.logOut().then(() => {
+      console.log("注销成功");
+    }).catch(err => console.log(err));
   },
-  getCurrent(){
-     return User.current()
+  getCurrent() {
+    return User.current();
   }
 };
 
-export {Auth}
+const Uploader = {
+  add(file: File | null, fileName: string) {
+    const item = new AV.Object("Image");
+    const avFile = new AV.File(fileName, file);
+    item.set("filename", fileName);
+    item.set("owner", AV.User.current());
+    item.set("url", avFile);
+    return new Promise((resolve, reject) => {
+        item.save().then(serveFile => {
+          console.log("上传成功");
+          resolve(serveFile);
+        }).catch(err => {
+          console.log("err");
+          reject(err);
+        });
+      }
+    );
+  }
+};
+
+export {Auth, Uploader};
