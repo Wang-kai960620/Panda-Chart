@@ -3,6 +3,7 @@ import {NavLink, useHistory} from "react-router-dom";
 import styled from "styled-components";
 import {Button} from "antd";
 import {useStore} from "../Store";
+import {observer} from "mobx-react";
 
 const Wrapper = styled.div`
 display: flex;
@@ -36,7 +37,7 @@ margin: 0 20px;
 `;
 
 
-function Header() {
+const Header = observer(() => {
   const {AuthStore, UserStore} = useStore();
   const history = useHistory();
   const handleLogout = () => {
@@ -44,12 +45,12 @@ function Header() {
     history.push("./register");
   };
 
-  const handleLogin =()=>{
-  history.push('./login')
-  }
-  const handleRegister = ()=>{
-    history.push('./register')
-  }
+  const handleLogin = () => {
+    history.push("./login");
+  };
+  const handleRegister = () => {
+    history.push("./register");
+  };
   useEffect(() => {
     UserStore.pullUser();
   }, [UserStore]);
@@ -79,6 +80,6 @@ function Header() {
 
     </div>
   );
-}
+});
 
 export {Header};
