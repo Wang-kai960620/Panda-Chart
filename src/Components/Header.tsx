@@ -15,10 +15,11 @@ background: #c4c4c4;
 text-decoration:none;
 font-size: 2em;
 margin: 0 20px;
+padding: 0 10px ;
 color: #fff;
+border-radius: 10px ;
 &.selected{
-color: #b8dbd3;
-border-bottom: 1px solid ;
+border-bottom: 1px solid  #b8dbd3;
 }
 }
 `;
@@ -35,6 +36,13 @@ font-size: 30px;
 margin: 0 20px;
 }
 `;
+
+const StyleNavLink = styled(NavLink)`
+:hover{
+background: #b8dbaa;
+color: black;
+}
+`
 
 
 const Header = observer(() => {
@@ -58,9 +66,9 @@ const Header = observer(() => {
     <div>
       <Wrapper>
         <Text>Panda</Text>
-        <NavLink to='/home' activeClassName='selected' exact>首页</NavLink>
-        <NavLink to='/history' activeClassName='selected'>上传历史</NavLink>
-        <NavLink to='/about' activeClassName='selected'>关于</NavLink>
+        <StyleNavLink to='/home' activeClassName='selected' exact>首页</StyleNavLink>
+        <StyleNavLink to='/history' activeClassName='selected'>上传历史</StyleNavLink>
+        <StyleNavLink to='/about' activeClassName='selected'>关于</StyleNavLink>
         <StyledEntry>
           {
             UserStore.currentUser ?
