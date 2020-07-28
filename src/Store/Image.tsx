@@ -30,6 +30,10 @@ class Image {
       }).finally(() => this.isUpLoading = false);
     });
   }
+  @action reset() {
+    this.isUpLoading = false;
+    this.serveFile = null;
+  }
 }
 
 export default  new Image()

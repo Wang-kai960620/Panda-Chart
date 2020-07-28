@@ -49,22 +49,18 @@ const Uploader = {
       }
     );
   },
-  find({page=0,limit=10}){
-    const query = new Query('Image')
-    query.limit(10)
-    query.include('owner')
-    query.equalTo('owner',AV.User.current())
-    query.descending('createdAt')
-    query.skip(page*limit)
-    return new Promise((resolve,reject)=>{
-      query.find().then(list=>{
-        console.log("查询成功");
-        resolve(list)
-      }).catch(err=>{
-        console.log("查询失败");
-        reject(err)
-      })
-    })
+  find({page=0, limit=10}) {
+    const query = new Query('Image');
+    query.include('owner');
+    query.limit(limit);
+    query.skip(page*limit);
+    query.descending('createdAt');
+    query.equalTo('owner', AV.User.current());
+    return new Promise((resolve, reject) => {
+      query.find()
+        .then(results => resolve(results))
+        .catch(error => reject(error))
+    });
   }
 };
 
