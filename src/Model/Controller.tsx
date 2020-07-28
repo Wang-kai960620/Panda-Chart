@@ -48,7 +48,25 @@ const Uploader = {
         });
       }
     );
+  },
+  find({page=0,limit=10}){
+    const query = new Query('Image')
+    query.limit(10)
+    query.include('owner')
+    query.equalTo('owner',AV.User.current())
+    query.descending('createdAt')
+    query.skip(page*limit)
+    return new Promise((resolve,reject)=>{
+      query.find().then(list=>{
+        console.log("查询成功");
+        resolve(list)
+      }).catch(err=>{
+        console.log("查询失败");
+        reject(err)
+      })
+    })
   }
 };
+
 
 export {Auth, Uploader};
