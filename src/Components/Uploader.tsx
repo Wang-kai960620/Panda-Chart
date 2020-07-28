@@ -28,17 +28,26 @@ const UpLoader = observer(() => {
       beforeUpload: (file: File) => {
         ImageStore.setFile(file);
         ImageStore.setFileName(file.name);
+        console.log(file);
         if (UserStore.currentUser === null) {
           message.warning(" 请先登录在上传");
           return false;
-        } else {
+        }
+        if (!(/.(jpg|jpeg|png|gif|svg)$/.test(file.type))){
+          message.error('不是支持的格式')
+          return false
+        }
+        if(file.size>1024*1024){
+          message.error('上传图片过大')
+          return false
+        }
           ImageStore.saveFile().then(() => {
             console.log("上传成功");
           }).catch(err => {
             console.log("上传失败");
             alert(JSON.stringify(err));
           });
-        }
+
         return false;
       },
     };
