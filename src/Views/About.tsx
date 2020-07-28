@@ -5,7 +5,7 @@ import styled, {keyframes} from "styled-components";
 
 const fontColor = keyframes`
   0%{color:red;}
-  50%{color: yellow}
+  50%{color:white;}
   100%{color:red;}
 `;
 const Wrapper = styled.div`
@@ -14,7 +14,7 @@ justify-content: center;
 margin: 50px auto;
 font-size: 50px;
 color: red;
-animation: linear infinite 1s ${fontColor};
+animation: linear infinite 2s ${fontColor};
 `;
 
 function About() {
