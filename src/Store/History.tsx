@@ -1,5 +1,6 @@
 import {action, observable} from "mobx";
 import {Uploader} from "../Model/Controller";
+import {message} from'antd'
 
 class History {
   @observable list = [];
@@ -11,9 +12,6 @@ class History {
 
   @action append(newList: any) {
     this.list = this.list.concat(newList);
-    console.log(newList);
-    console.log("``````````````");
-    console.log(this.list);
   }
 
   @action find() {
@@ -25,11 +23,12 @@ class History {
         // @ts-ignore
         if (list.length < this.limit) {
           this.hasMore = false;
+        }else{
+          message.success('加载成功')
         }
       })
       .catch(err => {
-      console.log("加载失败");
-      console.log(err);
+        message.error('加载失败')
     })
       .finally(() => {
       this.isLoading = false;

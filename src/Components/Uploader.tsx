@@ -28,7 +28,6 @@ const UpLoader = observer(() => {
       beforeUpload: (file: File) => {
         ImageStore.setFile(file);
         ImageStore.setFileName(file.name);
-        console.log(file);
         if (UserStore.currentUser === null) {
           message.warning(" 请先登录在上传");
           return false;
@@ -57,7 +56,7 @@ const UpLoader = observer(() => {
           <p className="ant-upload-drag-icon">
             <InboxOutlined/>
           </p>
-          <p className="ant-upload-text">Click or drag file to this area to upload</p>
+          <p className="ant-upload-text">点击拖拽上传文件</p>
           <p className="ant-upload-hint">
             Support for a single or bulk upload. Strictly prohibit from uploading company data or other
             band files

@@ -1,11 +1,29 @@
 import React from "react";
 import {Layout} from "../Components/Layout";
+import styled, {keyframes} from "styled-components";
+
+
+const fontColor = keyframes`
+  0%{color:red;}
+  50%{color: yellow}
+  100%{color:red;}
+`;
+const Wrapper = styled.div`
+display: flex;
+justify-content: center;
+margin: 50px auto;
+font-size: 50px;
+color: red;
+animation: linear infinite 1s ${fontColor};
+`;
 
 function About() {
   return (
-  <Layout>
-    <h1>这里是About页面</h1>
-  </Layout>
-)
+    <Layout>
+      <Wrapper>
+        Panda图床好用！！！</Wrapper>
+    </Layout>
+  );
 }
-export {About}
+
+export {About};

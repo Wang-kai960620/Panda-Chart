@@ -20,11 +20,9 @@ class Image {
     this.isUpLoading = true;
     return new Promise((resolve, reject) => {
       Uploader.add(this.file, this.filename).then(serveFile => {
-        console.log("上传成功，save File");
         this.serveFile = serveFile;
         resolve(serveFile)
       }).catch(err => {
-        console.log(err);
         this.isUpLoading = false;
         reject(err)
       }).finally(() => this.isUpLoading = false);

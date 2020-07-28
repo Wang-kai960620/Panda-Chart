@@ -1,4 +1,5 @@
 import AV, {Query, User} from "leancloud-storage";
+import {message} from 'antd'
 
 AV.init({
   appId: "YId6yG8LcyK0CGwLFaYIgYgf-gzGzoHsz",
@@ -58,7 +59,8 @@ const Uploader = {
     query.equalTo('owner', AV.User.current());
     return new Promise((resolve, reject) => {
       query.find()
-        .then(results => resolve(results))
+        .then(results => {
+          resolve(results);})
         .catch(error => reject(error))
     });
   }
