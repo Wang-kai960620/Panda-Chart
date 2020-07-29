@@ -31,7 +31,7 @@ const ListComponent =  observer( () => {
         pageStart={0}
         loadMore={loadMore}
         hasMore={!HistoryStore.isLoading && HistoryStore.hasMore}
-        useWindow={true}
+        useWindow={false}
       >
         <List
           dataSource={HistoryStore.list}
